@@ -5,7 +5,7 @@ setwd("C:/Users/hsrirama/Documents/Personal/Coursera/Course 4 - Exploratory Data
 if (!file.exists("./data/household_power_consumption.txt")) {unzip("exdata%2Fdata%2Fhousehold_power_consumption.zip", exdir = "data")}
 
 ## Pull entire dataset into a data frame variable
-my_data <- read.table("data/household_power_consumption.txt", sep = ";", header=TRUE) 
+my_data <- read.table("data/household_power_consumption.txt", sep = ";", header=TRUE, dec=".", stringsAsFactors=FALSE) 
 
 ## load the lubridate library to use the date functions
 library(lubridate)
@@ -23,7 +23,7 @@ esm2 <- as.numeric(req_data$Sub_metering_2)
 esm3 <- as.numeric(req_data$Sub_metering_3)
 dt <- strptime(paste(req_data$Date,  req_data$Time, sep =" "), "%d/%m/%Y %H:%M:%S")
 
-plot(dt, esm1, type="l", ylab="Energy sub metering", xlab="",ylim = c(0,40))
+plot(dt, esm1, type="l", ylab="Energy sub metering", xlab="")
 lines(dt, esm2, type="l", col="red")
 lines(dt, esm3, type="l", col="blue")
 
